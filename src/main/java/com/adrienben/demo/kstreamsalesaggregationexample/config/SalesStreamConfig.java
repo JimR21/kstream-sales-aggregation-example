@@ -19,6 +19,8 @@ import org.apache.kafka.streams.kstream.TimeWindows;
 import org.apache.kafka.streams.state.KeyValueStore;
 import org.apache.kafka.streams.state.Stores;
 import org.apache.kafka.streams.state.WindowStore;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,7 +35,9 @@ import java.time.ZoneId;
 @Slf4j
 @Configuration
 @EnableKafkaStreams
-public class StreamConfig {
+public class SalesStreamConfig {
+
+	Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	public static final String SALES_TOPIC = "sales";
 	public static final String AGGREGATED_SALES_TOPIC = "aggregated_sales";
@@ -51,7 +55,7 @@ public class StreamConfig {
 	private final Serde<Sales> salesSerde;
 	private final Produced<String, Sales> salesProduced;
 
-	public StreamConfig(
+	public SalesStreamConfig(
 			@Value("${app.window.duration}") Duration windowDuration,
 			ObjectMapper mapper
 	) {
@@ -66,7 +70,8 @@ public class StreamConfig {
 	}
 
 	@Bean
-	public KStream<String, Sales> kStream(StreamsBuilder streamBuilder) {
+	public KStream<String, Sales> kStreamSales(StreamsBuilder streamBuilder) {
+		logger.info("Starting Sales kStream");
 		// First we stream the sales records and group them by key
 		var salesByShop = streamBuilder.stream(SALES_TOPIC, saleConsumed).groupByKey();
 		// Then we aggregate them.

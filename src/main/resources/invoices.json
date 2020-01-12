@@ -1,0 +1,7 @@
+{
+  "orderId": "ORDER01",
+  "customerId": "CUST01",
+  "itemId": "ITEM01",
+  "itemAmount": 1,
+  "cost": 200
+}

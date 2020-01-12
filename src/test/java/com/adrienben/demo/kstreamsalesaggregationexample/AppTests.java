@@ -26,8 +26,8 @@ import java.time.Duration;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
-import static com.adrienben.demo.kstreamsalesaggregationexample.config.StreamConfig.AGGREGATED_SALES_TOPIC;
-import static com.adrienben.demo.kstreamsalesaggregationexample.config.StreamConfig.SALES_TOPIC;
+import static com.adrienben.demo.kstreamsalesaggregationexample.config.SalesStreamConfig.AGGREGATED_SALES_TOPIC;
+import static com.adrienben.demo.kstreamsalesaggregationexample.config.SalesStreamConfig.SALES_TOPIC;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.springframework.kafka.test.hamcrest.KafkaMatchers.hasKey;

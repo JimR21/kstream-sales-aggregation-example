@@ -4,12 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Sale {
-	private String shopId;
-	private Float amount;
+public class Order {
+    private String orderId;
+    private String customerId;
+    private String itemId;
+    private Integer itemAmount = 0;
+    private Float cost;
 }
