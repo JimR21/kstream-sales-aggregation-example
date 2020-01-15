@@ -1,4 +1,4 @@
-package com.adrienben.demo.kstreamsalesaggregationexample;
+package cern.ch.streams.demo;
 
 import com.adrienben.demo.kstreamsalesaggregationexample.domain.Sale;
 import com.adrienben.demo.kstreamsalesaggregationexample.domain.Sales;

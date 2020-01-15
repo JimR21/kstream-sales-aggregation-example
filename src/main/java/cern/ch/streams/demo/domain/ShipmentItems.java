@@ -1,4 +1,4 @@
-package com.adrienben.demo.kstreamsalesaggregationexample.domain;
+package cern.ch.streams.demo.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

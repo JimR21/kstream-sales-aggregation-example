@@ -1,4 +1,4 @@
-package com.adrienben.demo.kstreamsalesaggregationexample;
+package cern.ch.streams.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

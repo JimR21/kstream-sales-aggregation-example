@@ -1,22 +1,24 @@
-# Kafka Stream Sales Aggregation Example
+# Kafka Streams PoC example
 
-[![Build Status](https://travis-ci.com/adrien-ben/kstream-sales-aggregation-example.svg?branch=master)](https://travis-ci.com/adrien-ben/kstream-sales-aggregation-example)
-
-A simple application written in Kotlin using Spring and Kafka Stream to aggregate the data of a topic.
+A simple application written in Java using Spring and Kafka Stream to aggregate the data of a topic
 
 ## What it does
 
-The application listens to an kafka topic containing very simple sale data that contains the id of a shop
-and the amount of a sale. The key of the kafka message is the `shopId`.
+The application listens to an kafka topic ```orders``` containing very simple order data that contains the id of the order, the 
+customer id, the cost, the item id and the item amount. The key of the kafka message is the `orderId`.
 
 ```json
 {
-  "shopId": "SHOP01",
-  "amount": 10.2
+  "orderId": "ORDER01",
+  "customerId": "CUST01",
+  "itemId": "ITEM01",
+  "itemAmount": 1,
+  "cost": 200
 }
 ```
 
-This messages are then aggregated before being sent back to another kafka topic. You can control the size of the
+This messages are then aggregated before being sent back to 2 other kafka topics (```aggregated_invoices``` and 
+```aggregated_shipment_items```). You can control the size of the
 aggregation window by setting the `app.window.duration` parameter to any value (5m for 5 minutes for example) or
 set it to 0 if you don't want to aggregate the sale just in a timed window.
 
@@ -24,8 +26,8 @@ If set to 0 the updated aggregated value for a given shop will be sent to the to
 
 ```json
 {
-  "shopId": "SHOP01",
-  "amount": 124.4
+  "itemId": "ITEM01",
+  "itemAmount": 3
 }
 ```
 
